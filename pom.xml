@@ -79,7 +79,7 @@
 		  <version>4.0.2</version>
 		</dependency>
  
-	<!--  ECHO NEST -->       
+	<!--  ECHO NEST  
 		<dependency>
 			<groupId>com.googlecode.jen-api</groupId>
 			<artifactId>jen-api</artifactId>
@@ -87,6 +87,13 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/lib/jEN.jar</systemPath>
 		</dependency>
+		-->      
+		<!-- http://mvnrepository.com/artifact/com.googlecode.jen-api/jen-api -->
+			<dependency>
+			    <groupId>com.googlecode.jen-api</groupId>
+			    <artifactId>jen-api</artifactId>
+			    <version>4.x.p</version>
+			</dependency>
 		
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>

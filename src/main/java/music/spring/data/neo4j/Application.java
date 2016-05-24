@@ -76,14 +76,14 @@ public class Application extends WebMvcConfigurerAdapter {
 
 	private static final String API_KEY = "TTJBBYCF2LTQ7RLTL";
 	private final AsyncRestTemplate  asyncFactory = new AsyncRestTemplate();
-	private final EchoNestAPI echoNest = new EchoNestAPI(API_KEY);;
+	private final EchoNestAPI echoNest = new EchoNestAPI(API_KEY);
 	
 	private Gson gson = new GsonBuilder().registerTypeAdapterFactory(new music.util.ArrayAdapterFactory()).create();
 
     private JsonParser parser = new JsonParser();
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws EchoNestException, IOException {
         SpringApplication.run(Application.class, args);
     }
 
@@ -125,7 +125,8 @@ public class Application extends WebMvcConfigurerAdapter {
     
 
     @RequestMapping(path = "/v1/teste2/{token}", method = RequestMethod.POST, consumes="application/json")
-    public  ResponseEntity<String>  teste(@RequestBody String caracteristicas, @PathVariable("token") String token) throws URISyntaxException, InterruptedException, ExecutionException {
+    public  ResponseEntity<String>  teste(@RequestBody String caracteristicas, @PathVariable("token") String token) 
+    			throws URISyntaxException, InterruptedException, ExecutionException , EchoNestException{
     	log.debug("entrei aqui");
     	log.info("entrei pra informar ");
     	log.info(token);

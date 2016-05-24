@@ -31,13 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.echonest.api.v4.DynamicPlaylistParams;
-import com.echonest.api.v4.DynamicPlaylistSession;
-import com.echonest.api.v4.EchoNestAPI;
-import com.echonest.api.v4.EchoNestException;
-import com.echonest.api.v4.Playlist;
-import com.echonest.api.v4.PlaylistParams;
-import com.echonest.api.v4.Song;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
@@ -68,7 +62,7 @@ public class GroupController extends Controller<Group>{
 	
 	private static final String API_KEY = "TTJBBYCF2LTQ7RLTL";
 	
-	EchoNestAPI echoNest = new EchoNestAPI(API_KEY);
+
 	
 	@Override
 	public Service<Group> getService() {
@@ -142,7 +136,7 @@ public class GroupController extends Controller<Group>{
 		return new ResponseEntity<Integer>( Lists.newArrayList(groupService.findAll()).size(), HttpStatus.OK);
 	}
 	@RequestMapping(value="/add/{idGroup}/{idUser}",method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Group> addGroup(@PathVariable("idGroup") Long idGroup, @PathVariable("idUser") String id_spotify) throws EchoNestException{
+	public ResponseEntity<Group> addGroup(@PathVariable("idGroup") Long idGroup, @PathVariable("idUser") String id_spotify) {
 		
 		Group group = groupService.find(idGroup);
 		User userAdd = userService.findByIdSpotify(id_spotify);
@@ -186,7 +180,7 @@ public class GroupController extends Controller<Group>{
 		return new ResponseEntity<Group>(group, HttpStatus.OK);
 	}
 	@RequestMapping(value="/removeUser/{idGroup}/{idUser}",method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<Group> removeUser(@PathVariable("idGroup") Long idGroup, @PathVariable("idUser") String id_spotify) throws EchoNestException{
+	public ResponseEntity<Group> removeUser(@PathVariable("idGroup") Long idGroup, @PathVariable("idUser") String id_spotify){
 		
 		Group group = groupService.find(idGroup);
 		User userAdd = userService.findByIdSpotify(id_spotify);
