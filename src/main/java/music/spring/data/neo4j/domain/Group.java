@@ -10,11 +10,18 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
+
 
 @NodeEntity
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Group {
 	
-	@GraphId Long id;
+	@JsonProperty("id")
+	@GraphId
+	private Long id;
 	private String name;
 	private List<Object> caracteristicas;
 	

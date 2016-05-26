@@ -49,4 +49,11 @@ public class Track extends SimpleTrack {
     public int getPopularity() {
         return mPopularity;
     }
+
+	@Override
+	public String toString() {
+		return "Track [mAlbum=" + mAlbum + ", mExternalIds=" + mExternalIds + ", mPopularity=" + mPopularity + "]";
+	}
+    
+    
 }

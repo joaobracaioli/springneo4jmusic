@@ -130,4 +130,13 @@ public class SimpleAlbum {
     final public String getUri() {
         return mUri;
     }
+
+	@Override
+	public String toString() {
+		return "SimpleAlbum [mAlbumType=" + mAlbumType + ", mAvailableMarkets=" + mAvailableMarkets + ", mExternalUrls="
+				+ mExternalUrls + ", mHref=" + mHref + ", mId=" + mId + ", mImages=" + mImages + ", mName=" + mName
+				+ ", mType=" + mType + ", mUri=" + mUri + "]";
+	}
+    
+    
 }

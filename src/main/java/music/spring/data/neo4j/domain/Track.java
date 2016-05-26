@@ -8,14 +8,21 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
+
 @NodeEntity
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Track  {
 	
-	@GraphId Long id;
+	@JsonProperty("id")
+	@GraphId
+	private Long id;
 	@Property(name="name")
 	private String title;
 	
-	@Relationship(type="CREATE_TO", direction = Relationship.INCOMING)
+	@Relationship(type="CREATE_TO",direction = "UNDIRECTED")
 	List<Role_AT> roles = new ArrayList<Role_AT>();
 	
 	private Double danceability;
@@ -102,7 +109,7 @@ public class Track  {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((foreign == null) ? 0 : foreign.hashCode());
 		return result;
 	}
 	@Override
@@ -114,10 +121,10 @@ public class Track  {
 		if (getClass() != obj.getClass())
 			return false;
 		Track other = (Track) obj;
-		if (title == null) {
-			if (other.title != null)
+		if (foreign == null) {
+			if (other.foreign != null)
 				return false;
-		} else if (!title.equals(other.title))
+		} else if (!foreign.equals(other.foreign))
 			return false;
 		return true;
 	}

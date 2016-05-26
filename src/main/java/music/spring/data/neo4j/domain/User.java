@@ -7,18 +7,25 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
+
 
 @NodeEntity
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class User {
 	
-	@GraphId Long id;
+	@JsonProperty("id")
+	@GraphId
+	private Long id;
 	
 	private String id_spotify;
 	private String name;
 	private String email;
 	private String uri;
 	
-    @Relationship(type = "LISTENED_TO")
+    @Relationship(type = "LISTENED_TO",direction = "UNDIRECTED")
 	private Set<Track> trucks = new HashSet<>();
 	
     

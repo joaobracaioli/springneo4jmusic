@@ -3,11 +3,18 @@ package music.spring.data.neo4j.domain;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
+
 @NodeEntity
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Genre {
 	
 
-	@GraphId Long id;
+	@JsonProperty("id")
+	@GraphId
+	private Long id;
 	private String name;
 
 	

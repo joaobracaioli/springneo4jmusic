@@ -6,6 +6,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 
@@ -13,12 +14,13 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 @RelationshipEntity(type = "OF_TYPE")
 public class Role {
 
-	 @GraphId Long id;
-
-	 @StartNode
-	 private Genre genere;
-	 @EndNode
-	 private Artist artist;
+	@JsonProperty("id")
+	Long id;
+	
+	@StartNode
+	private Genre genere;
+	@EndNode
+	private Artist artist;
 	 
 	 
 	 private Double afinidade;

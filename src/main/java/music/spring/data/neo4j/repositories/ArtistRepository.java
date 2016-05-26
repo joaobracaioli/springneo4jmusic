@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ArtistRepository extends GraphRepository<Artist>{
+
+	Artist findByName(String name);
 	
 }

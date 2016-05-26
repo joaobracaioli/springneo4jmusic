@@ -31,4 +31,10 @@ public class TrackService extends GenericService<Track> implements TrackInterfac
 		return trackRepository.findByGenrePopularity(genre);
 	}
 
+	public Track findbyTitle(String title){
+		
+		
+		return trackRepository.findByTitle(title);
+	}
+
 }

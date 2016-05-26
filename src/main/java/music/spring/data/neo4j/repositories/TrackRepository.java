@@ -14,5 +14,7 @@ public interface TrackRepository extends GraphRepository<Track>{
 	
 	 @Query("MATCH (t:Truck)-[:CREATE_TO]-()-[:OF_TYPE]-(g:Genre {name: {genre} }) return t ")
 	 List<Map<String,Object>> findByGenrePopularity(@Param("genre") String genre);
+	 
+	 Track findByTitle(String title);
 
 }

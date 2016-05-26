@@ -11,9 +11,15 @@ import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.voodoodyne.jackson.jsog.JSOGGenerator;
+
 @NodeEntity
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 public class Artist {
 
+	@JsonProperty("id")
 	@GraphId Long id;
 	
 	private String name;
@@ -59,15 +65,11 @@ public class Artist {
 	public void setForeignID(String foreignID) {
 		this.foreignID = foreignID;
 	}
-	
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((foreignID == null) ? 0 : foreignID.hashCode());
+		result = prime * result + hotttnesss;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -80,10 +82,7 @@ public class Artist {
 		if (getClass() != obj.getClass())
 			return false;
 		Artist other = (Artist) obj;
-		if (foreignID == null) {
-			if (other.foreignID != null)
-				return false;
-		} else if (!foreignID.equals(other.foreignID))
+		if (hotttnesss != other.hotttnesss)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -92,16 +91,8 @@ public class Artist {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Artist [name=" + name + ", familiarity=" + familiarity
-				+ ", hotttnesss=" + hotttnesss + ", roles=" + roles + "]";
-	}
+	
 
-	
-	
-	
-	
 	
 	
 

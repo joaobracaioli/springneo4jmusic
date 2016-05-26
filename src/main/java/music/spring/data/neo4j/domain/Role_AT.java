@@ -8,6 +8,7 @@ import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 
@@ -16,7 +17,8 @@ import com.voodoodyne.jackson.jsog.JSOGGenerator;
 public class Role_AT {
 	
 	
-	 @GraphId Long id;
+	@JsonProperty("id")
+	Long id;
 	 
 	 @StartNode
 	 private Track truck;
