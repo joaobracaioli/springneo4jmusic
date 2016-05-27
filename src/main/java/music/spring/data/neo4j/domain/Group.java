@@ -25,23 +25,15 @@ public class Group {
 	private String name;
 	private List<Object> caracteristicas;
 	
-	@Relationship(type = "IN_THE_SOME")
+	@Relationship(type = "IN_THE_SOME",direction = "INCOMING")
 	private Set<User> members;
 	
-	private List<com.echonest.api.v4.Track> tracks;
-
-	private List<Genre> genres;
-	
+		
 	public Group() {
 		
 		this.members = new HashSet<>();
-		this.genres = new LinkedList<>();
 		this.caracteristicas = new ArrayList<Object>();
-		this.tracks = new LinkedList<>();
 	}
-	
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -50,34 +42,9 @@ public class Group {
 		this.id = id;
 	}
 
-	public List<com.echonest.api.v4.Track> getTracks() {
-		return tracks;
-	}
-
-
-
-	public void setTracks(com.echonest.api.v4.Track track) {
-		this.tracks.add(track);
-	}
-
-
-
 	public void setMembers(Set<User> members) {
 		this.members = members;
 	}
-
-
-
-	public List<Genre> getGenres() {
-		return genres;
-	}
-
-
-
-	public void addGenres(List<Genre> genres) {
-		this.genres = genres;
-	}
-
 
 
 	public List<Object> getCaracteristicas() {

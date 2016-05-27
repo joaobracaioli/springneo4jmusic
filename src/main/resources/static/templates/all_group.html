@@ -1,0 +1,17 @@
+<ion-view title="NA REGIÃO"  ng-init="atualizar()">
+  <ion-content class="has-header">
+    <ion-refresher
+      pulling-text="refresh..."
+      on-refresh="atualizar()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item ng-repeat="group in groups" class="list card">
+        <div class="item item-avatar" ng-click="addGroup(group.id)">
+            <img src="../img/play_group.svg"/>
+            <div class="h2-group">
+                <h2>{{group.name}}</h2>
+            </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>

@@ -1,0 +1,90 @@
+<ion-view title="GRUPO">
+  <ion-content class="has-header">
+
+      <ion-tabs class="tabs-top tabs-background-positive tabs-color-light">
+
+
+        <!-- Genero  -->
+        <ion-tab title="Recommended" icon="icon ion-home" href="#/app/group/genere">
+          <ion-nav-view name="tab-genere">
+              <ion-content class="has-header padding" style="top: 4em !important;">
+                <h1 class="green-tcc">Gêneros</h1>
+                <div class="row context-row" style="margin-top: 1em;">
+                  <div ng-repeat="genre in genres" class="list card col context-options circled">
+                      <div class="item item-avatar">
+                        <img src="../img/play_genre.svg"/>
+                        <div class="h2-group">
+                            <h2>{{genre.name}}</h2>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </ion-content>
+          </ion-nav-view>
+        </ion-tab>
+
+
+        <!-- Participants -->
+        <ion-tab title="Friends" icon="icon ion-person-stalker" href="#/app/group/participants">
+          <ion-nav-view name="tab-participants">
+              <ion-content class="has-header" style="top: 5em !important;">
+                <h1 class="green-tcc">Ouvintes</h1>
+                <ion-list>
+                  <ion-item ng-repeat="party in participants" class="list card">
+                    <div class="item item-avatar">
+                      <img src="../img/listening_players.svg"/>
+                        <div class="h2-group">
+                            <h2>{{party.name}}</h2>
+                        </div>
+                    </div>
+                  </ion-item>
+                </ion-list>
+              </ion-content>
+          </ion-nav-view>
+        </ion-tab>
+
+
+        <!-- Playlist -->
+        <ion-tab title="Playlist" icon="icon ion-music-note" href="#/app/group/playlist">
+          <ion-nav-view name="tab-playlist">
+              <ion-content class="has-header padding" style="top: 4em !important;">
+                <h1 class="green-tcc">Músicas</h1>
+                <ion-list>
+                  <ion-item ng-repeat="item in tracks" class="list card">
+
+                    <div class="item item-avatar">
+
+                      <img src="{{item.album.images[0].url}}">
+                      <h2>{{item.name}}</h2>
+                      <p>{{item.artists[0].name}}</p>
+
+                    </div>
+                    <div class="item tabs tabs-secondary tabs-icon-left tabs-background-balanced tabs-color-light">
+                      <a class="tab-item" ng-click="playTrack(item)">
+                        <i class="icon ion-music-note"></i>
+                        Play Preview
+                      </a>
+
+                      <a class="tab-item" ng-click="openSpotify(item.external_urls.spotify)">
+                        <i class="icon ion-share"></i>
+                        Open in Spotify
+                      </a>
+
+                    </div>
+                  </ion-item>
+                </ion-list>
+              </ion-content>
+          </ion-nav-view>
+        </ion-tab>
+
+
+      </ion-tabs>
+
+
+        <ion-footer-bar align-title="left" class="bar-light">
+          <button class="button button-outline button-balanced" ng-click="play()" ng-show="audio.src"><i class="ion-play"> Play</i></button>
+          <button class="button button-outline button-balanced" ng-click="stop()" ng-show="audio.src99"><i class="ion-stop"> Stop</i></button>
+          <button class="button button-clear pull-right" ng-click="sairGroup()">Sair</button>
+        </ion-footer-bar>
+  </ion-content>
+</ion-view>

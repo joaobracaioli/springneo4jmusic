@@ -1,0 +1,21 @@
+<ion-view title="As Melhorers Músicas para Grupo">
+    <ion-content class="has-header" style="height: 100%;">
+        <ion-list ng-controller="MainCtrl" class="text-align: center;" style="height: 100%;">
+            <a href="#/app/createGroup">
+                <ion-item class="menu-item create-section-main">
+                    <div class="item-text-center item-text-wrap">Criar</div>
+                </ion-item>
+            </a>
+            <a href="#/app/all_group">
+                <ion-item class="menu-item region-section-main">
+                    <div class="item-text-center item-text-wrap">Na Região <span class="badge badge-assertive">{{qtdGroups}}</span></div>
+                </ion-item>
+            </a>
+            <a href="#/app/playlists">
+                <ion-item class="menu-item history-section-main">
+                    <div class="item-text-center item-text-wrap">Histórico</div>
+                </ion-item>
+            </a>
+        </ion-list>
+    </ion-content>
+</ion-view>

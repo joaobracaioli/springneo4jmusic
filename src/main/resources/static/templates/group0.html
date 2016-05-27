@@ -1,0 +1,45 @@
+<ion-view title="Group">
+  <ion-content class="has-header">
+
+
+
+<!--
+  <ion-content scroll="false">
+    <ion-slide-box show-pager="false" ion-slide-tabs>
+        <ion-slide><h1>Recomendação</h1></ion-slide>
+        <ion-slide><h1>Participantes</h1></ion-slide>
+        <ion-slide><h1>Generos</h1></ion-slide>
+    </ion-slide-box>
+  </ion-content>
+-->
+      <ion-tabs class="tabs-icon-top">
+
+
+        <!-- Pets Tab -->
+        <ion-tab title="Recommended" icon="icon ion-home" href="#/app/group/genere">
+          <ion-nav-view name="tab-genere"></ion-nav-view>
+        </ion-tab>
+
+
+        <!-- Adopt Tab -->
+        <ion-tab title="Friends" icon="icon ion-heart" href="#/app/group/participants">
+          <ion-nav-view name="tab-participants"></ion-nav-view>
+        </ion-tab>
+
+
+        <!-- About Tab -->
+        <ion-tab title="Playlist" icon="icon ion-gear-b" href="#/app/group/playlist">
+          <ion-nav-view name="tab-playlist"></ion-nav-view>
+        </ion-tab>
+
+
+      </ion-tabs>
+
+
+        <ion-footer-bar align-title="left" class="bar-light" ng-show="audio.src">
+          <button class="button button-outline button-balanced" ng-click="play()"><i class="ion-play"> Play</i></button>
+          <button class="button button-outline button-balanced" ng-click="stop()"><i class="ion-stop"> Stop</i></button>
+          <button class="button button-clear pull-right">Right</button>
+        </ion-footer-bar>
+  </ion-content>
+</ion-view>

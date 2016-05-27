@@ -1,0 +1,32 @@
+<style type="text/css">
+.selected {
+  background-color: rgb(230, 230, 230);
+}
+</style>
+<ion-view title="CONTEXTO">
+  <ion-content class="has-header">
+        <h2 class="page-title">Contexto do grupo</h2>
+      <label class="item item-input item-floating-label input-context">
+        <input placeholder="Nome do Contexto"  ng-model="nameGroup"  type="text"/>
+        <span ng-show="errorName">{{errorName}}</span>
+     </label>
+
+    <div class="row context-row">
+        <ion-item class="col context-options" ng-repeat="list in selectionList"  ng-click="setSelected($index, list)"
+                  ng-class="{'selected':selection.indexOf($index) != -1}" >{{list.name}}
+        </ion-item>
+    </div>
+    <!-- tempo -->
+    <div class="item range range-positive context-row" style="padding: 1em;">
+      <i class="icon ion-clock"></i> 0h
+      <input type="range" name="tempo" min="0" max="24" value="5">
+      <i class="icon ion-ios-time"></i> 24hs
+    </div>
+    <!-- Criar -->
+    <button class="button button-balanced context-create-button" ng-click="createGroup(nameGroup)">
+      <span class="center-total">Criar</span>
+    </button>
+
+</ion-content>
+
+</ion-view>

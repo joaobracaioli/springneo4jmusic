@@ -73,6 +73,7 @@ public class Application extends WebMvcConfigurerAdapter {
 
 
     public static void main(String[] args) throws EchoNestException, IOException {
+
         SpringApplication.run(Application.class, args);
     }
 
