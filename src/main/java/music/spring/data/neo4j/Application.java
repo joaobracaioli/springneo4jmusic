@@ -27,12 +27,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.AsyncRestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.echonest.api.v4.EchoNestAPI;
@@ -56,6 +58,7 @@ import java.util.concurrent.ExecutionException;
  * @author mh
  * @since 06.10.14
  */
+@CrossOrigin
 @Configuration
 @Import(MyNeo4jConfiguration.class)
 @RestController("/")
@@ -90,8 +93,14 @@ public class Application extends WebMvcConfigurerAdapter {
     @Autowired
     TrackService trackService;
 
+    
+    @CrossOrigin
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public  ModelAndView index() {
+    	return new ModelAndView("index");
+    }
 
-
+    @CrossOrigin
     @RequestMapping(path = "/v1/teste2/{token}", method = RequestMethod.POST, consumes="application/json")
     public  ResponseEntity<String>  teste(@RequestBody String caracteristicas, @PathVariable("token") String token) 
     			throws URISyntaxException, InterruptedException, ExecutionException , EchoNestException{

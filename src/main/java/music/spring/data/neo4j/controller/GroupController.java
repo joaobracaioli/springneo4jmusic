@@ -39,6 +39,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
+@CrossOrigin
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 @RestController
 @RequestMapping(value = "/v1/group")
@@ -69,7 +70,7 @@ public class GroupController extends Controller<Group>{
 		return groupService;
 	}
 	
-	
+	@CrossOrigin
 	@RequestMapping(value="/groupCreate/{idUser}",method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Group> groupCreate(@PathVariable("idUser") String idUser, @RequestBody GroupGerate p){
 		
@@ -102,6 +103,7 @@ public class GroupController extends Controller<Group>{
 		return new ResponseEntity<Set<User>>( group.getMembers(), HttpStatus.OK);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value="/getGenreGroup/{idGroup}",method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Genre> > getGenreGroup(@PathVariable("idGroup") Long idGroup){
 		
@@ -115,6 +117,8 @@ public class GroupController extends Controller<Group>{
 		
 		return new ResponseEntity<List<Genre> >( genres, HttpStatus.OK);
 	}
+	
+	@CrossOrigin
 	@RequestMapping(value="/getContParticipants/{idGroup}",method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Genre>> getContParticipants(@PathVariable("idGroup") Long idGroup){
 		
@@ -128,12 +132,16 @@ public class GroupController extends Controller<Group>{
 		
 		return new ResponseEntity<List<Genre>>( genres, HttpStatus.OK);
 	}
+	
+	@CrossOrigin
 	@RequestMapping(value="/getSizeGroup",method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Integer> getSizeGroup(){
 		
 			
 		return new ResponseEntity<Integer>( Lists.newArrayList(groupService.findAll()).size(), HttpStatus.OK);
 	}
+	
+	@CrossOrigin
 	@RequestMapping(value="/add/{idGroup}/{idUser}",method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Group> addGroup(@PathVariable("idGroup") Long idGroup, @PathVariable("idUser") String id_spotify) {
 		
@@ -178,6 +186,8 @@ public class GroupController extends Controller<Group>{
 		groupService.createOrUpdate(group);
 		return new ResponseEntity<Group>(group, HttpStatus.OK);
 	}
+	
+	@CrossOrigin
 	@RequestMapping(value="/removeUser/{idGroup}/{idUser}",method = RequestMethod.PUT, consumes = "application/json")
 	public ResponseEntity<Group> removeUser(@PathVariable("idGroup") Long idGroup, @PathVariable("idUser") String id_spotify){
 		
