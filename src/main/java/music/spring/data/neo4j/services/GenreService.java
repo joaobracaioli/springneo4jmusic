@@ -2,6 +2,7 @@ package music.spring.data.neo4j.services;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class GenreService extends GenericService<Genre> implements GenreInterfac
 		return genreRepository.findByName(name);
 	}
 
-	public List<Genre>  findByNameGroup(String name){
+	public Iterable<Map<Genre, Integer>>   findByNameGroup(String name){
 		
 		return genreRepository.findBy(name);
 	}

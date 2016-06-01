@@ -77,15 +77,11 @@ public class User {
 
 
 	
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result
-				+ ((id_spotify == null) ? 0 : id_spotify.hashCode());
+		result = prime * result + ((id_spotify == null) ? 0 : id_spotify.hashCode());
 		return result;
 	}
 
@@ -98,11 +94,6 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (id_spotify == null) {
 			if (other.id_spotify != null)
 				return false;

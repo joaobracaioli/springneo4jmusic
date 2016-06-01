@@ -2,6 +2,7 @@ package music.spring.data.neo4j.controller;
 
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import music.spring.data.neo4j.domain.Genre;
@@ -69,11 +70,12 @@ public class GroupController extends Controller<Group>{
 		group.setOwner(userAdd.getId_spotify());
 		group.setMembers(userAdd);
 		group.setName(p.getName());
+		group.setAtivo(true);
 		group.setCaracteristicas(p.getCaracteristicas());
 		groupService.createOrUpdate(group);
 		return new ResponseEntity<Group>(group, HttpStatus.OK);
 	}
-
+	@CrossOrigin
 	@RequestMapping(value="/getParticipants/{idGroup}",method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Set<User>> getParticipants(@PathVariable("idGroup") Long idGroup){
 		
@@ -90,32 +92,32 @@ public class GroupController extends Controller<Group>{
 
 	@CrossOrigin
 	@RequestMapping(value="/getGenreGroup/{idGroup}",method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<List<Genre> > getGenreGroup(@PathVariable("idGroup") Long idGroup){
+	public ResponseEntity<Iterable<Map<Genre, Integer>>> getGenreGroup(@PathVariable("idGroup") Long idGroup){
 		
 		
 		Group group = groupService.find(idGroup);
 		if (group==null) {
 	           log.info("Group or User with id " + idGroup + "not found");
-	            return new ResponseEntity<List<Genre>>(HttpStatus.NOT_FOUND);
+	            return new ResponseEntity<Iterable<Map<Genre, Integer>>>(HttpStatus.NOT_FOUND);
 	        }
-		List<Genre> genres = genreService.findByNameGroup(group.getName());
+		Iterable<Map<Genre, Integer>>  genres = genreService.findByNameGroup(group.getName());
 		
-		return new ResponseEntity<List<Genre> >( genres, HttpStatus.OK);
+		return new ResponseEntity<Iterable<Map<Genre, Integer>>>( genres, HttpStatus.OK);
 	}
 	
 	@CrossOrigin
 	@RequestMapping(value="/getContParticipants/{idGroup}",method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<List<Genre>> getContParticipants(@PathVariable("idGroup") Long idGroup){
+	public ResponseEntity<Integer> getContParticipants(@PathVariable("idGroup") Long idGroup){
 		
 		
 		Group group = groupService.find(idGroup);
 		if (group==null) {
 	           log.info("Group or User with id " + idGroup + "not found");
-	            return new ResponseEntity<List<Genre>>(HttpStatus.NOT_FOUND);
+	            return new ResponseEntity<Integer>(HttpStatus.NOT_FOUND);
 	        }
-		List<Genre> genres = genreService.findByNameGroup(group.getName());
 		
-		return new ResponseEntity<List<Genre>>( genres, HttpStatus.OK);
+		
+		return new ResponseEntity<Integer>( group.getMembers().size(), HttpStatus.OK);
 	}
 	
 	@CrossOrigin
@@ -144,30 +146,7 @@ public class GroupController extends Controller<Group>{
 		}
 		
 		group.setMembers(userAdd);
-		/*
-		List<Genre> genres = genreService.findByNameGroup(group.getName());
-		group.addGenres(genres);
-		
-		
-		
-		DynamicPlaylistParams params = new DynamicPlaylistParams();
-		params.addIDSpace("spotify-WW");
-		params.setType(PlaylistParams.PlaylistType.GENRE_RADIO);
-		
-		for(Genre g : genres)
-		params.addGenre(g.getName());
-		params.addGenre("dance pop");
-		  params.includeTracks();
-		  params.setLimit(true);
-		  Playlist playlist=echoNest.createStaticPlaylist(params);
-		  
-		  for ( Song song : playlist.getSongs()) {
-			  com.echonest.api.v4.Track track=song.getTrack("spotify-WW");
-			  group.setTracks(track);
-			  log.info(track.getForeignID() + " " + song.getTitle()+ " by "+ song.getArtistName());
-		  }
-		  
-		  */
+
 		groupService.createOrUpdate(group);
 		return new ResponseEntity<Group>(group, HttpStatus.OK);
 	}
@@ -188,6 +167,10 @@ public class GroupController extends Controller<Group>{
 		
 		if(group.getMembers().size() ==0){
 			groupService.delete(group.getId());
+		}
+		if(userAdd.getId_spotify().equals(group.getOwner())){
+			group.setAtivo(false);
+			groupService.createOrUpdate(group);
 		}
 		
 		return new ResponseEntity<Group>(group, HttpStatus.OK);

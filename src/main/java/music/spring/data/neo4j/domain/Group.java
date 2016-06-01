@@ -21,12 +21,14 @@ public class Group {
 	@JsonProperty("id")
 	@GraphId
 	private Long id;
+	
 	private String name;
 	private List<Object> caracteristicas;
 	
 	private String owner;
+	private boolean ativo;
 	
-	@Relationship(type = "IN_THE_SOME",direction = "INCOMING")
+	@Relationship(type = "IN_THE_SOME",direction = "OUTGOING")
 	private Set<User> members;
 	
 		
@@ -37,6 +39,20 @@ public class Group {
 	}
 	
 	
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+
+
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+
+
+
 	public final String getOwner() {
 		return owner;
 	}
