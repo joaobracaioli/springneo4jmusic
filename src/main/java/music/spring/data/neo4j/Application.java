@@ -34,7 +34,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.AsyncRestTemplate;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.echonest.api.v4.EchoNestAPI;
@@ -96,8 +95,8 @@ public class Application extends WebMvcConfigurerAdapter {
     
     @CrossOrigin
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public  ModelAndView index() {
-    	return new ModelAndView("index");
+    public  String index() {
+    	return "index.html";
     }
 
     @CrossOrigin

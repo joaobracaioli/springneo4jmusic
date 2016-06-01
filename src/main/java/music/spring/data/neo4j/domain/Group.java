@@ -2,7 +2,6 @@ package music.spring.data.neo4j.domain;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +24,8 @@ public class Group {
 	private String name;
 	private List<Object> caracteristicas;
 	
+	private String owner;
+	
 	@Relationship(type = "IN_THE_SOME",direction = "INCOMING")
 	private Set<User> members;
 	
@@ -34,6 +35,18 @@ public class Group {
 		this.members = new HashSet<>();
 		this.caracteristicas = new ArrayList<Object>();
 	}
+	
+	
+	public final String getOwner() {
+		return owner;
+	}
+
+
+	public final void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

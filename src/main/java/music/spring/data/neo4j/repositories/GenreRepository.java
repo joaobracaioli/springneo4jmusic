@@ -21,7 +21,7 @@ public interface GenreRepository extends GraphRepository<Genre>{
 	@Query("MATCH (gr:Group) where gr.name ={name} "
 			+ "MERGE (g:Genre)-[:OF_TYPE]->(a:Artist)"
 			+ "WITH g,count(a) as rels, collect(a) as artists"
-			+ " WHERE rels > 2"
+			+ " WHERE rels > 15"
 			+ " RETURN g")
 	List<Genre> findBy(@Param("name") String nome);
 }

@@ -1,19 +1,17 @@
 package music.spring.data.neo4j.controller;
 
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import music.spring.data.neo4j.domain.Genre;
 import music.spring.data.neo4j.domain.Group;
-import music.spring.data.neo4j.domain.Track;
+
 import music.spring.data.neo4j.domain.User;
 import music.spring.data.neo4j.controller.Controller;
 import music.spring.data.neo4j.services.GenreService;
 import music.spring.data.neo4j.services.GroupService;
 import music.spring.data.neo4j.services.Service;
-import music.spring.data.neo4j.services.TrackService;
 import music.spring.data.neo4j.services.UserService;
 import music.util.GroupGerate;
 
@@ -22,7 +20,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jca.cci.core.InteractionCallback;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,10 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
 @CrossOrigin
@@ -54,19 +47,11 @@ public class GroupController extends Controller<Group>{
 	private UserService userService;
 	
 	@Autowired
-	private TrackService trackService;
-	
-	@Autowired
 	private GenreService genreService;
 	
-	
-	private static final String API_KEY = "TTJBBYCF2LTQ7RLTL";
-	
-
-	
+		
 	@Override
 	public Service<Group> getService() {
-		// TODO Auto-generated method stub
 		return groupService;
 	}
 	
@@ -81,7 +66,7 @@ public class GroupController extends Controller<Group>{
 	           log.info("Group or User with id  / "+idUser+"not found");
 	            return new ResponseEntity<Group>(HttpStatus.NOT_FOUND);
 	        }
-		
+		group.setOwner(userAdd.getId_spotify());
 		group.setMembers(userAdd);
 		group.setName(p.getName());
 		group.setCaracteristicas(p.getCaracteristicas());
