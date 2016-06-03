@@ -17,8 +17,13 @@ public interface GenreRepository extends GraphRepository<Genre>{
 
 	Genre findByName(String name);
 	
-	//trabalhar futuramente nessa query
-	@Query("MATCH (gr:Group) where gr.name ={name} "
+	//trabalhar futuramente nessa query 
+	/* MATCH (gr:Group) where gr.name ="Buraqueira"
+		MATCH (gr:Group)-[:IN_THE_SOME]->(u:User)-[]-()-[]->(a:Artist)<-[:OF_TYPE]-(g:Genre) where gr.name="Buraqueira"
+		WITH u, g,count(a) as rels, collect(a) as artists
+		WHERE rels > 7
+		RETURN g,rels order by  rels desc*/
+	@Query("MATCH (gr:Group)-[:IN_THE_SOME]->(u:User)-[]-()-[]->(a:Artist)<-[:OF_TYPE]-(g:Genre) where gr.name={name} "
 			+ " MERGE (g:Genre)-[:OF_TYPE]->(a:Artist)"
 			+ " WITH g,count(a) as rels, collect(a) as artists"
 			+ " WHERE rels > 3"
