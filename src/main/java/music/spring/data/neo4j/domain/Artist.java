@@ -28,7 +28,6 @@ public class Artist {
 	private int hotttnesss;
 	private String foreignID;
 	
-	
 	@Relationship(type="OF_TYPE", direction = Relationship.INCOMING)
 	List<Role> roles=  new ArrayList<Role>();
 	
