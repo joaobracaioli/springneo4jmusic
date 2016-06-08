@@ -65,9 +65,9 @@ public class Application extends WebMvcConfigurerAdapter {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-	private static final String API_KEY = "TTJBBYCF2LTQ7RLTL";
+	//private static final String API_KEY = "TTJBBYCF2LTQ7RLTL";
 	private final AsyncRestTemplate  asyncFactory = new AsyncRestTemplate();
-	private final EchoNestAPI echoNest = new EchoNestAPI(API_KEY);
+	//private final EchoNestAPI echoNest = new EchoNestAPI(API_KEY);
 	
 	private Gson gson = new GsonBuilder().registerTypeAdapterFactory(new music.util.ArrayAdapterFactory()).create();
 
@@ -249,10 +249,7 @@ public class Application extends WebMvcConfigurerAdapter {
 				    			artNeo4j.setName(tk.getTrack().getArtists().get(0).getName());
 				    		
 					    			
-					    			
-					    			
-		
-					    	
+					    					    	
 							
 					    	//Recuperando dados mais específico do artista no Spotify
 					    	URI uriArt = new URI("https://api.spotify.com/v1/artists/"+tk.getTrack().getArtists().get(0).getId());
@@ -277,26 +274,26 @@ public class Application extends WebMvcConfigurerAdapter {
 				    		
 				    		//Se o genero estiver vazio pela spotify pegar pela echoNest
 				    	 	//Essa atualização foi necessária apos 28 de abriu, qdo o Spotify começou a fornecer os serviços da EchoNest
-				    	    Thread.sleep(5000);
-				    		com.echonest.api.v4.Artist artistaEcho = echoNest.newArtistByName(tk.getTrack().getArtists().get(0).getName());
+				    	    //Thread.sleep(5000);
+				    		//com.echonest.api.v4.Artist artistaEcho = echoNest.newArtistByName(tk.getTrack().getArtists().get(0).getName());
 				    		
-				    		
+				    		if(art.getGenres().isEmpty()){
 				    		
 				    		 log.info(" =========  Generos EchoNest ======== ");
-						      List<com.echonest.api.v4.Term> term = artistaEcho.getTerms();
+						     List<String> term = art.getGenres();
 						      	
-							       for (com.echonest.api.v4.Term t : term){
+							       for (String  gen : term){
 							    	 //Genero EchoNest
 							    	Genre g1;
-									if(  (g1 = genreService.findByName(t.getName()) )==null ){
+									if(  (g1 = genreService.findByName(gen) )==null ){
 							    		  g1 = new Genre();
-							    		  g1.setName(t.getName());
+							    		  g1.setName(gen);
 									}
 		
 							    	   Role r = new Role();
 		
 							    	   r.setArtist(artNeo4j);
-							       	   r.setAfinidade(t.getFrequency());
+							       	   r.setAfinidade(1.0);
 							       	   r.setGenere(g1);
 							       	   //seta relacionamento
 							       	   artNeo4j.setRoles(r);
@@ -349,9 +346,9 @@ public class Application extends WebMvcConfigurerAdapter {
 				    		}
 				    		
 							userNeo4j.setTrucks(tkNeo4j);
-							
-							userService.createOrUpdate(userNeo4j);
 				    		
+							userService.createOrUpdate(userNeo4j);
+				    		}
 				    		log.info("================= Informações coletadas =====================");
 		
 				    	
@@ -360,10 +357,7 @@ public class Application extends WebMvcConfigurerAdapter {
 		
 				    		}
 				    		
-		    	    } catch (EchoNestException e) {
-						log.info("==== ERRO ECHONEST ===== "+e.getMessage());
-
-					} catch (InterruptedException e) {
+		    	   	} catch (InterruptedException e) {
 								// TODO Auto-generated catch block
 								log.info("==== ERRRROOOOO ===== "+e.getMessage());
 					}
