@@ -277,7 +277,7 @@ public class Application extends WebMvcConfigurerAdapter {
 				    	    //Thread.sleep(5000);
 				    		//com.echonest.api.v4.Artist artistaEcho = echoNest.newArtistByName(tk.getTrack().getArtists().get(0).getName());
 				    		
-				    		if(art.getGenres().isEmpty()){
+				    		
 				    		
 				    		 log.info(" =========  Generos EchoNest ======== ");
 						     List<String> term = art.getGenres();
@@ -346,9 +346,9 @@ public class Application extends WebMvcConfigurerAdapter {
 				    		}
 				    		
 							userNeo4j.setTrucks(tkNeo4j);
-				    		
+							
 							userService.createOrUpdate(userNeo4j);
-				    		}
+				    		
 				    		log.info("================= Informações coletadas =====================");
 		
 				    	
