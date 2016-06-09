@@ -285,7 +285,7 @@ public class Application extends WebMvcConfigurerAdapter {
 							       for (String  gen : term){
 							    	 //Genero EchoNest
 							    	Genre g1;
-									if(  (g1 = genreService.findByName(gen) )==null ){
+									if(  (g1 = genreService.findByName(gen))==null ){
 							    		  g1 = new Genre();
 							    		  g1.setName(gen);
 									}
