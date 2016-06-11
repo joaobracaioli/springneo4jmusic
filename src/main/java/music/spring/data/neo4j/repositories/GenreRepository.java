@@ -25,8 +25,8 @@ public interface GenreRepository extends GraphRepository<Genre>{
 		WHERE rels > 7
 		RETURN g,rels order by  rels desc*/
 	@Query(" MATCH (gr:Group) where gr.name ={name}"
-			+ " MATCH (gr:Group)-[:IN_THE_SOME]->(u:User)-[]-()-[]->(a:Artist)<-[:OF_TYPE]-(g:Genre)"
-			+ " WITH gr, g,count(a) as rels, collect(a) as artists"
+			+ " MATCH (gr:Group)-[:IN_THE_SOME]->(u:User)-[]-(tr:Track)-[]->(a:Artist)<-[:OF_TYPE]-(g:Genre) "
+			+ " WITH gr, g,count(g) as rels, collect(a) as Genre"
 			+ " WHERE gr.name={name} and rels >2"
 			+ " RETURN g, rels order by rels desc")
 	Iterable<Map<Genre, Integer>> findBy(@Param("name") String nome);

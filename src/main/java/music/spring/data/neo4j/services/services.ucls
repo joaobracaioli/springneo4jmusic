@@ -1,6 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="music.spring.data.neo4j.services.GenreService" project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/GenreService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="149" width="304" x="713" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" language="java" name="music.spring.data.neo4j.services.Service" project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/Service.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="131" width="147" x="1382" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="music.spring.data.neo4j.services.ArtistService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/ArtistService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="149" width="285" x="1057" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="music.spring.data.neo4j.services.UserService" project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/UserService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="167" width="225" x="1569" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="music.spring.data.neo4j.services.GroupService" project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/GroupService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="113" width="232" x="2124" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="music.spring.data.neo4j.services.TrackInterfaceService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/TrackInterfaceService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="152" x="1611" y="397"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="music.spring.data.neo4j.services.GenericService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/GenericService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="203" width="208" x="1447" y="-53"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="music.spring.data.neo4j.services.ArtistInterfaceService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/ArtistInterfaceService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="151" x="1230" y="397"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="9" language="java" name="music.spring.data.neo4j.services.GenreInterfaceService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/GenreInterfaceService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="154" x="1036" y="397"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="10" language="java" name="music.spring.data.neo4j.services.GroupInterfaceService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/GroupInterfaceService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="154" x="1803" y="397"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="11" language="java" name="music.spring.data.neo4j.services.TrackService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/TrackService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="149" width="250" x="1834" y="190"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="music.spring.data.neo4j.services.UserInterfaceService" 
+    project="Music Spring Data Neo4j 4" 
+    file="/Music Spring Data Neo4j 4/src/main/java/music/spring/data/neo4j/services/UserInterfaceService.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="147" x="1424" y="397"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="14">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="16">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <realization id="19">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="22">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="25">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <realization id="26">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="27">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

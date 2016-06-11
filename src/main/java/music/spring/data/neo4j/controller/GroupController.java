@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import music.spring.data.neo4j.domain.Artist;
 import music.spring.data.neo4j.domain.Genre;
 import music.spring.data.neo4j.domain.Group;
 
 import music.spring.data.neo4j.domain.User;
 import music.spring.data.neo4j.controller.Controller;
+import music.spring.data.neo4j.services.ArtistService;
 import music.spring.data.neo4j.services.GenreService;
 import music.spring.data.neo4j.services.GroupService;
 import music.spring.data.neo4j.services.Service;
@@ -50,6 +52,8 @@ public class GroupController extends Controller<Group>{
 	@Autowired
 	private GenreService genreService;
 	
+	@Autowired
+	private ArtistService artService;
 		
 	@Override
 	public Service<Group> getService() {
@@ -75,6 +79,7 @@ public class GroupController extends Controller<Group>{
 		groupService.createOrUpdate(group);
 		return new ResponseEntity<Group>(group, HttpStatus.OK);
 	}
+	
 	@CrossOrigin
 	@RequestMapping(value="/getParticipants/{idGroup}",method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Set<User>> getParticipants(@PathVariable("idGroup") Long idGroup){
@@ -103,6 +108,21 @@ public class GroupController extends Controller<Group>{
 		Iterable<Map<Genre, Integer>>  genres = genreService.findByNameGroup(group.getName());
 		
 		return new ResponseEntity<Iterable<Map<Genre, Integer>>>( genres, HttpStatus.OK);
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value="/getArtistaGroup/{idGroup}",method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<Iterable<Map<Artist, Integer>>> getArtsRel(@PathVariable("idGroup") Long idGroup){
+		
+		
+		Group group = groupService.find(idGroup);
+		if (group==null) {
+	           log.info("Group or User with id " + idGroup + "not found");
+	            return new ResponseEntity<Iterable<Map<Artist, Integer>>>(HttpStatus.NOT_FOUND);
+	        }
+		Iterable<Map<Artist, Integer>>  art = artService.findByRelArtista(group.getName());
+		
+		return new ResponseEntity<Iterable<Map<Artist, Integer>>>( art, HttpStatus.OK);
 	}
 	
 	@CrossOrigin
